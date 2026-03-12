@@ -308,16 +308,33 @@
 .visualCardMain {
   width: min(100%, 470px);
   left: 7%;
-  top: 12%;
+  top: 16%;
   padding: 1.2rem 1.18rem;
   transform: rotateX(calc(var(--pointer-y) * -4deg)) rotateY(calc(var(--pointer-x) * 4deg));
   animation: floatMain 7s ease-in-out infinite;
 }
 
+.visualCardHobbies {
+  width: min(62%, 260px);
+  right: 4%;
+  top: -4%;
+  padding: 0.95rem 0.95rem;
+  transform: rotateX(calc(var(--pointer-y) * -2deg)) rotateY(calc(var(--pointer-x) * 3deg));
+  animation: floatAlt 7.2s ease-in-out infinite;
+}
+
+.visualCardHobbies h3 {
+  margin-top: 0;
+}
+
+.visualCardHobbies span {
+  margin-top: 0.45rem;
+}
+
 .visualCardAlt {
   width: min(76%, 300px);
   right: 8%;
-  top: 46%;
+  top: 50%;
   padding: 0.95rem 0.95rem;
   transform: rotateX(calc(var(--pointer-y) * 2deg)) rotateY(calc(var(--pointer-x) * -4deg));
   animation: floatAlt 8s ease-in-out infinite;
@@ -462,13 +479,48 @@
   margin-top: 1.2rem;
   --card-width: clamp(180px, 22vw, 262px);
   --card-gap: clamp(0.68rem, 1vw, 1rem);
+  position: relative;
+  padding: clamp(0.95rem, 2.2vw, 1.35rem);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background:
+    radial-gradient(circle at 11% 12%, rgba(114, 98, 208, 0.23) 0%, rgba(114, 98, 208, 0) 44%),
+    radial-gradient(circle at 88% 7%, rgba(165, 119, 224, 0.18) 0%, rgba(165, 119, 224, 0) 42%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.03) 45%, rgba(255, 255, 255, 0.01) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    0 26px 50px rgba(8, 6, 18, 0.44);
+  backdrop-filter: blur(18px) saturate(175%);
+  overflow: hidden;
+}
+
+.modelingSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.modelingHeader p {
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  font-size: 0.68rem;
+  color: #cec9e1;
+}
+
+.modelingHeader h2 {
+  margin-top: 0.56rem;
+  font-size: clamp(1.18rem, 2.6vw, 1.8rem);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
 }
 
 .carouselViewport {
   position: relative;
   overflow: hidden;
-  margin-top: 0.2rem;
-  height: calc((var(--card-width) * 4 / 3) + 2rem);
+  margin-top: 0.75rem;
 }
 
 .carouselTrack {
@@ -508,7 +560,7 @@
 .carouselPhotoFrame {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: var(--photo-ratio, 3 / 4);
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.24);
@@ -957,6 +1009,12 @@
     width: 94%;
   }
 
+  .visualCardHobbies {
+    right: 2%;
+    top: -2%;
+    width: 66%;
+  }
+
   .visualCardAlt {
     right: 2%;
     width: 72%;
@@ -969,6 +1027,7 @@
   }
 
   .modelingSection {
+    padding: 0.9rem;
     --card-width: clamp(170px, 62vw, 236px);
     --card-gap: 0.72rem;
   }
@@ -990,6 +1049,7 @@
   .carouselCard,
   .carouselTrackAnimated,
   .visualCardMain,
+  .visualCardHobbies,
   .visualCardAlt,
   .visualCardMini,
   .impactPopped,
@@ -1154,6 +1214,21 @@
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.92),
     0 18px 34px rgba(149, 81, 18, 0.16);
+}
+
+.lightMode .modelingSection {
+  border-color: rgba(193, 110, 24, 0.3);
+  background:
+    radial-gradient(circle at 10% 14%, rgba(252, 176, 64, 0.27) 0%, rgba(252, 176, 64, 0) 46%),
+    radial-gradient(circle at 88% 8%, rgba(245, 123, 42, 0.2) 0%, rgba(245, 123, 42, 0) 44%),
+    linear-gradient(150deg, rgba(255, 250, 238, 0.97) 0%, rgba(255, 232, 191, 0.83) 46%, rgba(255, 255, 255, 0.72) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 20px 40px rgba(159, 85, 16, 0.16);
+}
+
+.lightMode .modelingSection::before {
+  border-color: rgba(190, 104, 20, 0.16);
 }
 
 .lightMode .projectCard:nth-child(odd) {

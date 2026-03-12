@@ -12,20 +12,44 @@ const heroStats = [
 
 const modelingShoots = [
   {
-    src: "/modeling/shoot-01.svg",
+    src: "/modeling/red_bag.JPG",
+    fallbackSrc: "/modeling/shoot-01.svg",
     title: "Editorial Portrait Series",
+    width: 1179,
+    height: 2096,
   },
   {
-    src: "/modeling/shoot-02.svg",
+    src: "/modeling/black_hoodie.jpeg",
+    fallbackSrc: "/modeling/shoot-02.svg",
     title: "Streetwear Campaign",
+    width: 1280,
+    height: 1920,
   },
   {
-    src: "/modeling/shoot-03.svg",
+    src: "/modeling/varia-fantasy.jpeg",
+    fallbackSrc: "/modeling/shoot-03.svg",
     title: "Formalwear Feature",
+    width: 807,
+    height: 1197,
   },
   {
-    src: "/modeling/shoot-04.svg",
+    src: "/modeling/kitchen.jpeg",
+    fallbackSrc: "/modeling/shoot-04.svg",
     title: "Commercial Catalog Set",
+    width: 1206,
+    height: 1822,
+  },
+  {
+    src: "/modeling/grey-jacket.jpeg",
+    title: "Monochrome Jacket Study",
+    width: 1206,
+    height: 1425,
+  },
+  {
+    src: "/modeling/shirtless.jpeg",
+    title: "Athletic Editorial Session",
+    width: 1206,
+    height: 1763,
   },
 ];
 
@@ -386,7 +410,7 @@ export default function Home() {
             <p className={styles.roleLine}>Software Engineer - iOS, Backend, Cloud</p>
 
             <h1 className={styles.headline}>
-              I build production systems that move fast, scale cleanly, and solve real bottlenecks.
+              Hey! I&apos;m Biniam, usually go by Bini. I like to build—usually for me, maybe for you too.
             </h1>
 
             <p className={styles.lead}>
@@ -419,6 +443,10 @@ export default function Home() {
               <h3>Incoming SDE @ Audible</h3>
               <span>Infrastructure, release velocity, production reliability</span>
             </article>
+            <article className={`${styles.visualCard} ${styles.visualCardHobbies}`}>
+              <h3>Hobbies</h3>
+              <span>Fashion, Fitness, Sewing, Modeling</span>
+            </article>
             <article className={`${styles.visualCard} ${styles.visualCardAlt}`}>
               <p>Degree</p>
               <h3>B.S. Computer Science</h3>
@@ -434,37 +462,56 @@ export default function Home() {
         </section>
 
         <section id="modeling" className={`${styles.contentSection} ${styles.modelingSection}`}>
+          <header className={styles.modelingHeader}>
+            <p>Modeling</p>
+            <h2>A few favorites from recent shoots.</h2>
+          </header>
           <div
             className={styles.carouselViewport}
             onMouseEnter={() => setIsCarouselPaused(true)}
             onMouseLeave={() => setIsCarouselPaused(false)}
           >
             <div
-              className={`${styles.carouselTrack} ${
-                trackTransitionEnabled ? styles.carouselTrackAnimated : styles.carouselTrackStatic
-              }`}
+              className={`${styles.carouselTrack} ${trackTransitionEnabled ? styles.carouselTrackAnimated : styles.carouselTrackStatic
+                }`}
               style={{ "--track-shift": trackIndex - 1 }}
               aria-live="polite"
             >
               {loopedShoots.map((shoot, index) => (
-                <article key={`${shoot.src}-${index}`} className={styles.carouselCard}>
+                <article
+                  key={`${shoot.src}-${index}`}
+                  className={styles.carouselCard}
+                  style={{ "--photo-ratio": `${shoot.width} / ${shoot.height}` }}
+                >
                   <div className={styles.carouselPhotoFrame}>
-                    {missingShots[shoot.src] ? (
-                      <div className={styles.carouselFallback}>
-                        <p>Add your headshot at</p>
-                        <code>{shoot.src}</code>
-                      </div>
-                    ) : (
-                      <Image
-                        src={shoot.src}
-                        alt={shoot.title}
-                        fill
-                        sizes="(max-width: 760px) 62vw, (max-width: 1120px) 34vw, 24vw"
-                        className={styles.carouselImage}
-                        priority={index < 3}
-                        onError={() => markShotMissing(shoot.src)}
-                      />
-                    )}
+                    {(() => {
+                      const primaryMissing = Boolean(missingShots[shoot.src]);
+                      const hasFallback = Boolean(shoot.fallbackSrc);
+                      const fallbackMissing = hasFallback ? Boolean(missingShots[shoot.fallbackSrc]) : true;
+                      const imageSrc = primaryMissing && hasFallback ? shoot.fallbackSrc : shoot.src;
+                      const showImage = !primaryMissing || (hasFallback && !fallbackMissing);
+
+                      if (showImage) {
+                        return (
+                          <Image
+                            src={imageSrc}
+                            alt={shoot.title}
+                            fill
+                            sizes="(max-width: 760px) 62vw, (max-width: 1120px) 34vw, 24vw"
+                            className={styles.carouselImage}
+                            priority={index < 3}
+                            onError={() => markShotMissing(imageSrc)}
+                          />
+                        );
+                      }
+
+                      return (
+                        <div className={styles.carouselFallback}>
+                          <p>Add your headshot at</p>
+                          <code>{shoot.src}</code>
+                        </div>
+                      );
+                    })()}
                   </div>
                 </article>
               ))}
@@ -664,8 +711,8 @@ export default function Home() {
           <div className={styles.contactGlass}>
             <p>Closing Statement</p>
             <h2>
-              I build systems that remove bottlenecks, automate workflows, and improve release
-              velocity.
+              I like to systematically remove bottlenecks, automate workflows, and improve release
+              velocity—no I&apos;m serious, I really do.
             </h2>
 
             <div className={styles.focusBlock}>
