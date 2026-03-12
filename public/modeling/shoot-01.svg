@@ -1,0 +1,23 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="140" y1="80" x2="1460" y2="920" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#211233"/>
+      <stop offset="0.52" stop-color="#3F2664"/>
+      <stop offset="1" stop-color="#6A3A8D"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="274" y1="184" x2="1268" y2="836" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBECCF" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#FDEAD2" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" rx="40" fill="url(#bg)"/>
+  <circle cx="260" cy="240" r="210" fill="#8A5CC9" fill-opacity="0.34"/>
+  <circle cx="1330" cy="780" r="280" fill="#CD85FF" fill-opacity="0.24"/>
+  <rect x="252" y="164" width="1096" height="672" rx="34" fill="url(#panel)" stroke="white" stroke-opacity="0.26"/>
+  <text x="800" y="470" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" text-anchor="middle">
+    Editorial Portrait
+  </text>
+  <text x="800" y="544" fill="#E9DAFF" font-family="Arial, Helvetica, sans-serif" font-size="34" letter-spacing="4" text-anchor="middle">
+    REPLACE WITH YOUR ACTUAL SHOOT IMAGE
+  </text>
+</svg>

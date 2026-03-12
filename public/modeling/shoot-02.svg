@@ -1,0 +1,23 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="90" y1="60" x2="1520" y2="930" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101D2F"/>
+      <stop offset="0.48" stop-color="#1D385B"/>
+      <stop offset="1" stop-color="#2D5A84"/>
+    </linearGradient>
+    <linearGradient id="strip2" x1="220" y1="120" x2="1380" y2="880" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8F2FF" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#D8F2FF" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" rx="40" fill="url(#bg2)"/>
+  <circle cx="1260" cy="230" r="230" fill="#6AB9FF" fill-opacity="0.3"/>
+  <circle cx="350" cy="760" r="300" fill="#8FD2FF" fill-opacity="0.2"/>
+  <rect x="228" y="146" width="1144" height="708" rx="36" fill="url(#strip2)" stroke="white" stroke-opacity="0.26"/>
+  <text x="800" y="470" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" text-anchor="middle">
+    Streetwear Campaign
+  </text>
+  <text x="800" y="544" fill="#D7ECFF" font-family="Arial, Helvetica, sans-serif" font-size="34" letter-spacing="4" text-anchor="middle">
+    SWAP THIS PLACEHOLDER WITH YOUR PHOTO
+  </text>
+</svg>
